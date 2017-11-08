@@ -1,2 +1,2 @@
-# Redis学习
-记录我的Redis学习笔记
+# RedisStudy
+record my Redis study note

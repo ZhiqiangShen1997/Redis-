@@ -1,0 +1,105 @@
+学了几条关于哈希操作的命令
+
+1.hset (key) (field value)
+如果键为key的哈希表不存在则创建键为key的哈希表
+同时在该哈希表内创建属性名为field 值为value 的属性
+返回的结果为添加的属性个数
+
+例如	hset myhash name rose
+	(integer) 1
+
+2.hget (key) (field)
+查找指定键为key的哈希表中属性名为field的属性值
+如果指定属性名无对应的属性值返回(nil)
+
+例如	hget myhash name
+	"rose"
+
+3.hmset (key) (field value)[field value...]
+如果键为key的哈希表不存在则创建键为key的哈希表
+同时在该哈希表内创建一个或多个属性
+
+例如 	hmset myhash age 18 sex male
+	OK
+
+4.hmget (key) (field)[field...]
+查找指定键为key的哈希表中多个属性的值
+结果的属性值的顺序即在命令中的顺序
+
+例如 	hmget myhash name age sex
+	1) "rose"
+	2) "18"
+	3) "male"
+ 	
+5.hgetall (key)
+查找指定键为key的哈希表中所有属性名以及对应的值
+结果为一个属性名一个属性值顺序排列
+
+例如	hgetall myhash
+	1) "name"
+ 	2) "rose"
+	3) "age"
+	4) "18"
+	5) "sex"
+	6) "male"
+	7) "name1"
+	8) "123"
+	9) "nane5"
+	10) "123"
+
+6.hkeys (key)
+查找指定键为key的哈希表中的所有属性名
+
+例如	hkeys myhash
+	1) "name"
+	2) "age"
+	3) "sex"
+	4) "name1"
+	5) "nane5"
+
+7.hvals (key)
+查找指定键为key的哈希表中的所有属性值
+
+例如	hvals myhash
+	1) "rose"
+	2) "18"
+	3) "male"
+	4) "123"
+	5) "123"
+
+8.hlen (key)
+查找指定键为key的哈希表中的属性数量
+
+例如 	hlen myhash
+	(integer) 5
+
+9.hexists (key) (field)
+判断指定键为key的哈希表中是否有指定属性
+如果有则返回1 否则返回0
+
+例如	hexists myhash name
+	(integer) 1
+	hexists myhash name3
+	(integer) 0
+10.hincrby (key) (field) (increment)
+增加指定键为key的哈希表的指定属性值
+返回值为增加后的属性值
+
+例如	hincrby myhash age 3
+	(integer) 21
+
+11.hdel (key) (field)[field...]
+删除指定键为key的哈希表中的属性
+可以同时删除多个
+返回值为删除的属性个数
+例如	hdel myhash name1 nane5
+	(integer) 2
+
+12.del (key) [key...]
+删除指定键为key的哈希表
+可以删除多个
+删除后该哈希表中的所有属性一同被删除
+返回值为删除的哈希表个数
+
+例如	del myhash
+	(integer) 1

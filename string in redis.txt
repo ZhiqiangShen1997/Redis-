@@ -94,5 +94,5 @@
 例如	append num 3
 	(integer) 2
 	get num
-	"13"
+	"13" 
 
